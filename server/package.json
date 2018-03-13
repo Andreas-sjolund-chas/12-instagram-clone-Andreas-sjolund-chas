@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.2.0",
+    "jwt-express": "^1.1.0",
+    "mongoose": "^5.0.8",
+    "uuid": "^3.2.1"
+  }
+}

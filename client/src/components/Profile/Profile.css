@@ -1,0 +1,41 @@
+.Profile-header {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.Profile-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.Profile-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.Profile--header__infoContainer,
+.Profile--header__posts,
+.Profile--header__followers,
+.Profile--header__follows {
+  padding: 20px;
+}
+
+.Profile--header__avatar {
+  width: 100px;
+  height: 100px;
+}
+.Profile--header__email {
+
+}
+.Profile--header__posts {
+  margin: 5px;
+}
+.Profile--header__followers {
+  margin: 5px;
+}
+.Profile--header__follows {
+  margin: 5px;
+}

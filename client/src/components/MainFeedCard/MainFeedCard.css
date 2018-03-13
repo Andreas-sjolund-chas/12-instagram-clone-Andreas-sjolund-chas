@@ -1,0 +1,87 @@
+.MainFeedCard {
+    padding: 20px;
+    height: auto;
+    border: solid #222 1px;
+    border-radius: 10px;
+    box-shadow: 2px #000;
+    margin-bottom: 15px;
+}
+
+.card-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-container {
+
+}
+
+.card-avatar {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.media-container {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    display: flex;
+    max-width: 760px;
+}
+
+.card-img {
+    width: 760px;
+    min-height: 430px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.card-like-btn {
+    border: none;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    margin-right: 20px;
+}
+
+.card-like-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: red;
+    font-size: 25px;
+}
+
+.card-ammount-likes {
+    padding-top: 10px;
+}
+
+.card-comment-btn {
+    border: none;
+    margin-left: 25px;
+    width: 15px;
+    height: 15px;
+    position: relative;
+}
+
+.card-comment-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 25px;
+}
+
+.card-comment-avatar {
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+}
+
+.card-comment-section {
+    text-align: left;
+}
+
+.card-comment {
+    padding-left: 40px;
+}
