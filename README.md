@@ -4,7 +4,9 @@
 
 ```
 cd client
-yarn
+yarn start
 cd ../server
-yarn
+nodemon server.js
+-- with debugger in server --
+nodemon --inspect server.js
 ```
