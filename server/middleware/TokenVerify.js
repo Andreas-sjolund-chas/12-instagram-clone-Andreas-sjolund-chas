@@ -1,10 +1,10 @@
 var jwt = require('jsonwebtoken');
 var config = require('../config');
+var User = require('../User');
 
 function tokenVerify(req, res, next) {
   
   var token = req.headers['x-access-token'];
-    debugger;
   if (!token) {
     return res.status(401).send({
       authenticated: false,
@@ -14,14 +14,19 @@ function tokenVerify(req, res, next) {
 
   jwt.verify(token, config.secret, function(error, decodedToken) {
     if (error) {
-      res.status(500).send({
+      return res.status(500).send({
         authenticated: false,
         message: "An error occurred when trying to authenticate token"
       });
     }
+    User.findById(decodedToken.id)
+    .then(user => {
+      req.user = user;
+      req.userId = decodedToken.id;
+      next();
 
-    req.userId = decodedToken.id;
-    next();
+    })
+
 
   });
 

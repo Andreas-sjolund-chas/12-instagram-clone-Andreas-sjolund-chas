@@ -57,12 +57,9 @@ router.post('/signin', function(req, res) {
     })
     .select('+password')
     .exec(function(error, user) {
-        console.log(user);
         if(user) {
             bcrypt.compare(req.body.password, user.password, function(error, result, next) {
-                console.log(user);
                 if(result) {
-                    console.log('Right password!');
                     
                     var token = jwt.sign({ id: user._id }, config.secret, {
                         expiresIn: 86400 // valid for 24 hours
@@ -127,35 +124,6 @@ router.put('/:id', function(req, res) {
         } else {
             return res.status(200).send('user ' + user.name +  " was successfully updated.");
         }
-    });
-});
-
-// router.post('/me', function(req, res) {
-//     var decodedToken = jwt.decode(req.body.token);
-//     User.findById(decodedToken.id, function(error, user) {
-//         if (error) {
-//             res.statusMessage = 'Something went wrong, no user was found.'
-//             return res.status(404).end();
-//         } else {
-//             return res.status(200).send(user);
-//         }
-//     })
-// })
-
-router.get("/me", tokenVerify, function(req, res) {
-    User.findById(req.userId, function(error, user) {
-      if (error) {
-        res.status(500).send("An error occured when trying to find the user");
-      }
-
-      if (!user) {
-        res.status(404).send("User not found");
-      }
-
-      res.status(200).send({
-        authenticated: true,
-        user: user
-      });
     });
 });
 

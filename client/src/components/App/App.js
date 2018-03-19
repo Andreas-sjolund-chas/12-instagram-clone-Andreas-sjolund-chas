@@ -12,8 +12,10 @@ class App extends Component {
     super();
 
     this.state = {
-      width: window.innerWidth
+      isMobile: false
     };
+
+    this.innerWidth = window.innerWidth;
 
     this.handleLocalStorageChange = this.handleLocalStorageChange.bind(this);
   }
@@ -21,12 +23,9 @@ class App extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
-
-  componentWillMount() {
-    window.addEventListener("resize", this.handleWindowSizeChange); // Adds resize event listener on window
-  }
-
+  
   componentDidMount() {
+    window.addEventListener("resize", this.handleWindowSizeChange); // Adds resize event listener on window
     if (typeof window !== "undefined") {
       window.addEventListener("storage", this.handleLocalStorageChange);
     }
@@ -45,16 +44,20 @@ class App extends Component {
   }
 
   handleWindowSizeChange = () => {
-    this.setState({ width: window.innerWidth }); // Sets current width to this.state
+    if (window.innerWidth <= 500 && !this.state.isMobile)
+      this.setState({ isMobile: true })
+
+    if (window.innerWidth >= 500 && this.state.isMobile)
+      this.setState({ isMobile: false })
+
   };
 
   handleLocalStorageChange() {
-    this.context.router.history.push('/login/signin');
+    this.context.router.history.push('/user');
   }
 
   render() {
-    const { width } = this.state.width;
-    const isMobile = window.innerWidth <= 500;
+    const { isMobile } = this.state;
 
     return (
       <CookiesProvider>

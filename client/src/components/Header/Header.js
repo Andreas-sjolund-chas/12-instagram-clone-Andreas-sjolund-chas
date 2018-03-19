@@ -17,7 +17,7 @@ class Header extends Component {
               <Link to="/" className="Header-nav-link"><i className="fas fa-home"></i></Link>
               <Link to="/search" className="Header-nav-link"><i className="fas fa-search"></i></Link>
               <Link to="/upload" className="Header-nav-link"><i className="fas fa-camera-retro"></i></Link>
-              <Link to="/login" className="Header-nav-link"><i className="fas fa-user"></i></Link>
+              <Link to="/user/" className="Header-nav-link"><i className="fas fa-user"></i></Link>
               <Link to="/liked" className="Header-nav-link"><i className="fas fa-heart"></i></Link>
             </nav>
             :

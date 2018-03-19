@@ -26,11 +26,11 @@ class Login extends Component {
       <div className="Login">
         { !this.props.isAuthenticated ?
         <div>
-            <Link to="/login/signin">Sign in</Link>
-            <Link to="/login/signup">Sign up</Link>
+            <Link to="/user/signin">Sign in</Link>
+            <Link to="/user/signup">Sign up</Link>
             
-            <Route path="/login/signin" component={Signin} />
-            <Route path="/login/signup" component={Signup} />
+            <Route path="/user/signin" component={Signin} />
+            <Route path="/user/signup" component={Signup} />
             </div>
           :
           <Profile />

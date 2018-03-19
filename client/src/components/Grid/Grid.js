@@ -8,24 +8,15 @@ class Grid extends Component {
     this.state = {  }
   }
   render() { 
+    console.log(this.props.card)
+    const photoStyle = {
+      backgroundImage: `url('${this.props.card.photoPath}'`
+    }
     return ( 
-      <div className="Grid-container">
-
-          <Link to="/photo/id"><img src="http://placehold.it/300x300" alt="Profile picture"/></Link>
-          <Link to="/photo/id"><img src="http://placehold.it/300x300" alt="Profile picture"/></Link>
-          <Link to="/photo/id"><img src="http://placehold.it/300x300" alt="Profile picture"/></Link>
-          <Link to="/photo/id"><img src="http://placehold.it/300x300" alt="Profile picture"/></Link>
-          <Link to="/photo/id"><img src="http://placehold.it/300x300" alt="Profile picture"/></Link>
-          <Link to="/photo/id"><img src="http://placehold.it/300x300" alt="Profile picture"/></Link>
-          <Link to="/photo/id"><img src="http://placehold.it/300x300" alt="Profile picture"/></Link>
-          <Link to="/photo/id"><img src="http://placehold.it/300x300" alt="Profile picture"/></Link>
-          <Link to="/photo/id"><img src="http://placehold.it/300x300" alt="Profile picture"/></Link>
-          <Link to="/photo/id"><img src="http://placehold.it/300x300" alt="Profile picture"/></Link>
-          <Link to="/photo/id"><img src="http://placehold.it/300x300" alt="Profile picture"/></Link>
-          <Link to="/photo/id"><img src="http://placehold.it/300x300" alt="Profile picture"/></Link>
-          
-
-      </div>
+      
+      <React.Fragment>
+        <div className="Grid--photo" style={photoStyle}></div>
+      </React.Fragment>
      );
   }
 }

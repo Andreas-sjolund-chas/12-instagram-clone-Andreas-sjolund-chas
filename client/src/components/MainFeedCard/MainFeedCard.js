@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import PhotoComment from "./PhotoComment/PhotoComment";
-import "./MainFeedCard.css";
 import CommentForm from "../Comment/Form/CommentForm";
+import { likePhoto } from "../../actions/photoCardActions";
+import { connect } from "react-redux";
+import moment from "moment";
+import "./MainFeedCard.css";
 
 class MainFeedCard extends Component {
   constructor(props) {
@@ -14,16 +17,13 @@ class MainFeedCard extends Component {
   }
 
   handleCommentAdded(commentContent) {
-    this.props.onCommentAdded(commentContent);
     this.setState({
       commentForm: false
     });
   }
 
   handleLike() {
-    this.setState({
-      likes: this.state.likes + 1
-    });
+    this.props.dispatch(likePhoto(this.props.photo._id))
   }
 
   handleCommentOpener() {
@@ -40,23 +40,25 @@ class MainFeedCard extends Component {
   }
 
   render() {
-    const styles = {
-      backgroundImage: `url(${this.props.photo.photoPath})`
+    const photoStyles = {
+      backgroundImage: `url('${this.props.photo.photoPath}')`
     };
-
+    const avatarStyles = {
+      backgroundImage: `url('${this.props.photo.author.avatar}')`
+    };
     return (
       <div className="MainFeedCard">
         <div className="photo-line-divider-top"></div>
         <div className="user-container card-row">
-          <img
-            src={this.props.photo.author.avatar}
-            alt=""
-            className="card-avatar"
-          />
-          <p className="card-username">{this.props.photo.author.name}</p>
+        <div className="card-avatar" style={avatarStyles} />
+          
+          <div className="card-col">
+            <p className="card-username">{this.props.photo.author.name}</p>
+            <p>{moment(this.props.photo.createdAt).fromNow()}</p>
+          </div>
         </div>
         <div className="media-container">
-          <div className="card-img" style={styles} />
+          <div className="card-img" style={photoStyles} />
         </div>
         <div className="card-like-section card-row">
           <button className="card-like-btn" onClick={this.handleLike.bind(this)}>
@@ -67,17 +69,28 @@ class MainFeedCard extends Component {
           </button>
           </div>
           <div className="card-row">
-            <p className="card-ammount-likes">{this.state.likes} Likes</p>  
+          {/*  TODO : MAKE SURE THE COMPONENT RERENDER WHEN THE LIKE BUTTON IS CLICKED! */}
+            <p className="card-ammount-likes">{this.props.photo.likes.length} Likes</p>
           </div>
         <div className="card-comment-container">
-          {this.props.photo.comments.map(item => {
-            return <PhotoComment comment={item} />;
-          })}
+
+          { this.props.photo.comments.length ?
+            this.props.photo.comments.map(item => {
+              return <PhotoComment comment={item} />;
+            })
+          
+          :
+            <div>
+              <div className="comment-line-divider-top"></div>
+                <p>No comments yet</p>
+              <div className="comment-line-divider-bottom"></div>  
+            </div>
+          } 
+
           { this.state.commentForm ?
           <CommentForm 
-            onCommentAdded={this.handleCommentAdded.bind(this)} 
             photo={this.props.photo}
-            id={this.props.photo.id}
+            id={this.props.photo._id}
             />
           :''}
         </div>
@@ -87,4 +100,4 @@ class MainFeedCard extends Component {
   }
 }
 
-export default MainFeedCard;
+export default connect(null)(MainFeedCard);

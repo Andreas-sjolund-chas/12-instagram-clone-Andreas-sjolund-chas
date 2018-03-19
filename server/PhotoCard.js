@@ -1,16 +1,15 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
 // Beskriv hur en user ska se ut
 
 var PhotoCardSchema = new mongoose.Schema({
-    id: String,
+    createdAt: { type: Date, default: Date.now },
     author: {
       name: String,
       avatar: String,
-      authorId: Number
+      authorId: String
     },
     photoPath: String,
-    likes: Number,
+    likes: Array,
     comments: Array
 });
 

@@ -13,16 +13,16 @@ import { apiUtils } from '../utils/utils';
 // FETCH USER
 export function fetchUser(token) {
   return (dispatch) => {
-    return fetch("/users/me", {
+    return fetch("/auth/me", {
       headers: {
-        "Accept": "application/json",
-        "X-ACCESS-TOKEN": token
+        "Content-Type": "application/json",
+        "x-access-token": token
       }
     })
       .then(res => res.json())
       .then((data) => {
         const user = {user: data.user, token: token}
-        
+        return user;
       })
   }
 } 
@@ -52,7 +52,6 @@ export function userLoginAttempt(credentials) {
     .then(apiUtils.checkStatus)
     .then(response => response.json())
     .then(payload => {
-      console.log(payload)
       localStorage.setItem("token", payload.token);
       return dispatch(userLoginSuccess(payload));
     })
@@ -79,7 +78,7 @@ export function userSignupAttempt(data) {
   .then(res => {
 
 
-        localStorage.setItem("user", JSON.stringify(res.token));
+        localStorage.setItem("token", res.token);
 
         return dispatch(userLoginSuccess(res));
 

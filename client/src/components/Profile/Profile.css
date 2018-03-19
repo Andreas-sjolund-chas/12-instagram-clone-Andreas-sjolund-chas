@@ -26,9 +26,14 @@
 .Profile--header__avatar {
   width: 100px;
   height: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.Profile--header__name {
+  font-size: 50px;
 }
 .Profile--header__email {
-
+  font-size: 20px;
 }
 .Profile--header__posts {
   margin: 5px;

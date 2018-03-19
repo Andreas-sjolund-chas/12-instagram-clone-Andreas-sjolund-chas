@@ -35,40 +35,6 @@ class Signup extends Component {
         // Call the action HERE
         this.props.userSignupAttempt(data);
 
-        // fetch('/users/register', {
-        //     method: 'POST',
-        //     headers: {           
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data),
-        // })
-        // .then(res => res.json())
-        // .then(res => {
-        //     console.log(res);
-        //     if(res.error) {
-        //         this.setState({
-        //             status: {
-        //                 error: res.error
-        //             }
-        //         });
-        //     } else {
-        //         this.setState({
-        //             status: {
-        //                 success: res.name
-        //             }
-        //         });
-        //         localStorage.setItem("user", JSON.stringify(res.token));
-        //         let storage = localStorage.getItem("user");
-        //         console.log(JSON.parse(storage).user);
-        //     }
-        //     // Do something with the successfully created user
-        // })
-        // .catch(error => {
-        //     // Show an error message in the component?
-        //     // Could also handle validation errors here
-        //     console.error(error);
-        // });
         event.target.elements[0].value = '';
         event.target.elements[1].value = '';
         event.target.elements[2].value = '';

@@ -12,18 +12,18 @@ export default function(ComposedComponent) {
 
     componentWillMount() {
       if (!this.props.isAuthenticated) {
-        return this.context.router.history.push("/login/signin");
+        return this.context.router.history.push("/user");
       }
     }
 
     componentWillReceiveProps(nextProps) {
       if (!nextProps.isAuthenticated) {
-        return this.context.router.history.push("/login/signin");
+        return this.context.router.history.push("/user");
       }
     }
 
     redirectToLogin() {
-      return <Redirect to="/login/signin" />
+      return <Redirect to="/user" />
     }
 
     renderComposedComponent() {

@@ -1,73 +1,88 @@
 import React, { Component } from 'react';
 import { Grid } from '../';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchUser } from '../../actions/userActions';
+import { fetchAllPhotosByUserId } from '../../actions/photoCardActions';
+
 import './Profile.css';
+
+const mapDispatchToProps = dispatch => {
+  return {
+      fetchUser: user => dispatch(fetchUser(user)),
+      fetchAllPhotosByUserId: photoCard => dispatch(fetchAllPhotosByUserId(photoCard))
+  };
+};
 
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      email: '',
-      name: ''
+      email: String,
+      name: String,
+      id: String,
+      avatar: String,
+      photoCards: []
      }
   }
 
   componentDidMount() {
-    this.fetchUser();
-  }
-
-  fetchUser() {
-    var data = {
-      token: localStorage.getItem('token')
-    }
-    fetch('/users/me', {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(res => {
-      this.setState({
-        id: res.id,
-        email: res.email,
-        name: res.name
+    var token = localStorage.getItem('token');
+    this.props.fetchUser(token)
+      .then(res => {
+        this.setState({
+          email: res.user.email,
+          name: res.user.name,
+          avatar: res.user.avatar
+        })
+      });
+    this.props.fetchAllPhotosByUserId(token)
+      .then(res => {
+        this.setState({
+          photoCards: res
+        });
       })
-    })
-    .catch()
   }
 
-  render() { 
+  render() {
+    const avatarStyles = {
+      backgroundImage: `url('${this.state.avatar}')`
+    }
+    console.log(this.state.photoCards)
     return ( 
       <div className="Profile-container">
       <header className="Profile-header">
-        <div className="Profile-row Profile--header__avatar">
-          <img src="http://placehold.it/100x100" alt="Profile picture"/>
-          </div>
-          
+        <div className="Profile-row Profile--header__avatar" style={avatarStyles} />
           <div className="Profile-row Profile--header__infoContainer">
-          <h1 className="Profile--header__name">{this.state.name}</h1>
-          <div className="Profile-col">
-            <p className="Profile--header__email">{this.state.email}</p>
-            <div className="Profile-row">
-              <p className="Profile--header__posts">POSTS 32</p>
-              <p className="Profile--header__followers">FOLLOWERS 666</p>
-              <p className="Profile--header__follows">FOLLOWS 42</p>
-            </div>
-          </div>
-            <Link to="profile/settings"><h1 className="Profile--header__settings"><i class="fas fa-cogs"></i></h1></Link>
-        </div>
+            <h1 className="Profile--header__name">{this.state.name}</h1>
+            <div className="Profile-col">
+              <p className="Profile--header__email">{this.state.email}</p>
+              <div className="Profile-row">
+                <p className="Profile--header__posts">POSTS 32</p>
+                <p className="Profile--header__followers">FOLLOWERS 666</p>
+                <p className="Profile--header__follows">FOLLOWS 42</p>
+              </div>
 
+            </div>
+              <Link to="profile/settings"><h1 className="Profile--header__settings"><i className="fas fa-cogs"></i></h1></Link>
+          </div>
 
       </header>
       <main className="Profile-main">
-        <Grid />
+      <div className="Grid-container">
+        {this.state.photoCards.map(photoCard => {
+          return (
+            <Grid card={photoCard}/>
+          );
+
+        })}
+      </div>
       </main>
       </div>
      );
   }
 }
+
+const ConnectedProfile = connect(null, mapDispatchToProps)(Profile);
  
-export default Profile;
+export default ConnectedProfile;
