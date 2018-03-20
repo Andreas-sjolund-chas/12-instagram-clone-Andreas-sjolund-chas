@@ -63,7 +63,7 @@ class Profile extends Component {
               </div>
 
             </div>
-              <Link to="profile/settings"><h1 className="Profile--header__settings"><i className="fas fa-cogs"></i></h1></Link>
+              <Link to="profile/settings"><h1 className="Profile--header__settings"><i className="fa fa-cogs"></i></h1></Link>
           </div>
 
       </header>

@@ -65,10 +65,10 @@ class MainFeedCard extends Component {
         </div>
         <div className="card-like-section card-row">
           <button className="card-like-btn" onClick={this.handleLike.bind(this)}>
-            <i className="fas fa-heart card-like-icon" />
+            <i className="fa fa-heart card-like-icon" />
           </button>
           <button className="card-comment-btn" onClick={this.handleCommentOpener.bind(this)}>
-          <i className="far fa-comment card-comment-icon"></i>
+          <i className="fa fa-comment card-comment-icon"></i>
           </button>
           </div>
           <div className="card-row">

@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 
 import { Header, Footer } from "..";
 import { Root } from "../../containers";
+// Fontawesome
+import 'font-awesome/css/font-awesome.min.css'
 
 import "./App.css";
 
