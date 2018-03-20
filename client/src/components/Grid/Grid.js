@@ -8,7 +8,6 @@ class Grid extends Component {
     this.state = {  }
   }
   render() { 
-    console.log(this.props.card)
     const photoStyle = {
       backgroundImage: `url('${this.props.card.photoPath}'`
     }

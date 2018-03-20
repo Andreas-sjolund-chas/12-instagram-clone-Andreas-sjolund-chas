@@ -10,18 +10,24 @@ const mapStateToProps = state => {
 }
 
 class MainFeed extends Component {
+  constructor() {
+    super();
+
+  }
   componentDidMount() {
     this.props.fetchPhotoCards()
+
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="MainFeed">
         { this.props.photoCards.length ?
           this.props.photoCards.map(photoCard => {
 
           return (
-            <MainFeedCard photo={photoCard} />
+            <MainFeedCard key={photoCard._id} photo={photoCard} />
           );
         })
         :

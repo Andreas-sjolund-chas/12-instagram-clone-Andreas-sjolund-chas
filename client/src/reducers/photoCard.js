@@ -32,9 +32,8 @@ const photoCard = (state = [], action) => {
             } else {
               photo.likes = [...photo.likes, action.payload.userId]
             }
-            console.log(photo.likes)
           }
-          return photo
+          return {...photo}
         })
         
       case LIKE_PHOTO_FAILURE:

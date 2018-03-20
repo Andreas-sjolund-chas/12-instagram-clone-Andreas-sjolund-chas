@@ -48,7 +48,6 @@ class Profile extends Component {
     const avatarStyles = {
       backgroundImage: `url('${this.state.avatar}')`
     }
-    console.log(this.state.photoCards)
     return ( 
       <div className="Profile-container">
       <header className="Profile-header">

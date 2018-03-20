@@ -6,12 +6,15 @@ import { connect } from "react-redux";
 import moment from "moment";
 import "./MainFeedCard.css";
 
+const mapStateToProps = state => {
+  return { likes: state.likes };
+}
+
 class MainFeedCard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      likes: this.props.photo.likes,
       commentForm: false
     }
   }
@@ -27,7 +30,6 @@ class MainFeedCard extends Component {
   }
 
   handleCommentOpener() {
-
     if(!this.state.commentForm) {
     this.setState({
         commentForm: true
@@ -40,6 +42,7 @@ class MainFeedCard extends Component {
   }
 
   render() {
+    console.log(this.props.photo)
     const photoStyles = {
       backgroundImage: `url('${this.props.photo.photoPath}')`
     };
@@ -100,4 +103,4 @@ class MainFeedCard extends Component {
   }
 }
 
-export default connect(null)(MainFeedCard);
+export default connect(mapStateToProps)(MainFeedCard);
