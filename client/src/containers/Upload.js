@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Route, Link } from 'react-router-dom';
 import { CameraCapture, PhotoForm } from '../components';
 
-// import './Upload.css';
+import './Upload.css';
 
 class Upload extends Component {
   constructor() {
@@ -14,10 +14,10 @@ class Upload extends Component {
   render() {
     return (
       <div className="Upload">
-      <Link to="/upload/photo">Upload photo</Link>
-      <Link to="/upload/newphoto">Snap a photo</Link>
+      <Link to="/upload/picture" className="Upload-link"><button>Upload photo</button></Link>
+      <Link to="/upload/newphoto" className="Upload-link"><button>Snap a photo</button></Link>
       
-      <Route path="/upload/photo" component={PhotoForm} />
+      <Route path="/upload/picture" component={PhotoForm} />
       <Route path="/upload/newphoto" component={CameraCapture} />
       </div>
     );

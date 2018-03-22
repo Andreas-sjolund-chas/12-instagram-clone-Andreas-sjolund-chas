@@ -4,6 +4,7 @@
   margin-top: 30px;
   align-items: center;
   justify-content: center;
+  border-bottom: solid 1px black;
 }
 
 .Profile-row {
@@ -14,12 +15,17 @@
 .Profile-col {
   display: flex;
   flex-direction: column;
+  margin-right: 20px;
+}
+
+.Profile--sign-out {
+  border: none;
+  font-size: 40px;
 }
 
 .Profile--header__infoContainer,
 .Profile--header__posts,
-.Profile--header__followers,
-.Profile--header__follows {
+.Profile--header__likes {
   padding: 20px;
 }
 
@@ -31,6 +37,7 @@
 }
 .Profile--header__name {
   font-size: 50px;
+  margin-right: 40px;
 }
 .Profile--header__email {
   font-size: 20px;
@@ -38,9 +45,6 @@
 .Profile--header__posts {
   margin: 5px;
 }
-.Profile--header__followers {
-  margin: 5px;
-}
-.Profile--header__follows {
+.Profile--header__likes {
   margin: 5px;
 }

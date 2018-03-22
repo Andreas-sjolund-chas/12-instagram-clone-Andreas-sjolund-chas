@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import moment from "moment";
 import './Grid.css';
 
 class Grid extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
   }
-  render() { 
+  render() {
     const photoStyle = {
       backgroundImage: `url('${this.props.card.photoPath}'`
     }

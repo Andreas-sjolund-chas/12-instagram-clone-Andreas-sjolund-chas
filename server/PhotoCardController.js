@@ -73,7 +73,6 @@ router.post('/create', tokenVerify, upload.single('photo'), function(req, res) {
 
 // COMMENT ON PHOTOCARD
 router.put('/comment', tokenVerify, function(req, res) {
-  console.log(req.body)
   const idToUse = uuidv1()
   PhotoCard.findByIdAndUpdate(req.body.photoId, {
     $push: {

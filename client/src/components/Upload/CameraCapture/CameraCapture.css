@@ -7,7 +7,8 @@
     justify-content: center;
     flex-direction: row;
     z-index: 1;
-    width: 100%
+    width: 100%;
+    margin-top: 50px;
 }
 
 .captureButton {

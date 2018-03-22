@@ -14,7 +14,6 @@ class PhotoForm extends Component {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
-  
   }
 
   handleSubmit(event) {

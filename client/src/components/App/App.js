@@ -55,7 +55,8 @@ class App extends Component {
   };
 
   handleLocalStorageChange() {
-    this.context.router.history.push('/user');
+    localStorage.removeItem('token');
+    this.context.router.history.push('/user/signin');
   }
 
   render() {

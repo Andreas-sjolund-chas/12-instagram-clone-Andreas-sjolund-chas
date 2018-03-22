@@ -17,7 +17,6 @@ router.post('/register', function(req, res) {
         'name': req.body.name
     })
     .exec(function(error, user) {
-        console.log(user)
 
         if(user) {
             res.statusMessage = "The username already exists!"

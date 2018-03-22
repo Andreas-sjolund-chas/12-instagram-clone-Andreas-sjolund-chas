@@ -9,15 +9,14 @@ class Header extends Component {
     return (
       <div className="Header">
         <header className="Header-container">
-          <img src={logo} className="Header-logo" alt="logo" />
-          <h1 className="Header-title">Instamang</h1>
+          <Link to="/"><h1 className="Header-title"><i className="fa fa-camera-retro Header-logo"></i><hr width="1" size="30" />Instamang</h1></Link>
           
           {!this.props.isMobile ? 
             <nav className="Header-nav">
               <Link to="/" className="Header-nav-link"><i className="fa fa-home"></i></Link>
               <Link to="/search" className="Header-nav-link"><i className="fa fa-search"></i></Link>
               <Link to="/upload" className="Header-nav-link"><i className="fa fa-camera-retro"></i></Link>
-              <Link to="/user/" className="Header-nav-link"><i className="fa fa-user"></i></Link>
+              <Link to="/user" className="Header-nav-link"><i className="fa fa-user"></i></Link>
               <Link to="/liked" className="Header-nav-link"><i className="fa fa-heart"></i></Link>
             </nav>
             :

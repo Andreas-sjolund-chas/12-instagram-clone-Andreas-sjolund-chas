@@ -6,7 +6,7 @@ var UserSchema = new mongoose.Schema({
     name: {type: String, maxlength: [100, 'I\'m sure your name isn\'t that long']},
     email: String,
     password: {type: String, minlength: [8, 'Passwords must contain at least 8 characters'], select: false },
-    avatar: {type: String, default: 'avatars/user.png'},
+    avatar: {type: String, default: '/avatars/user.png'},
     likes: Array
 });
 

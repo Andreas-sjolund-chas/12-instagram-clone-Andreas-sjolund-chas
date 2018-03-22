@@ -3,6 +3,7 @@ import update from "immutability-helper";
 import { connect } from 'react-redux';
 import { MainFeedCard } from "../components";
 import { fetchPhotoCards } from "../actions/photoCardActions";
+import { fetchUser } from "../actions/userActions";
 import "./MainFeed.css";
 
 const mapStateToProps = state => {
@@ -15,19 +16,20 @@ class MainFeed extends Component {
 
   }
   componentDidMount() {
+    const token = localStorage.getItem('token');
     this.props.fetchPhotoCards()
-
+      .then(this.props.fetchUser(token))
+    
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="MainFeed">
         { this.props.photoCards.length ?
           this.props.photoCards.map(photoCard => {
 
           return (
-            <MainFeedCard key={photoCard._id} photo={photoCard} />
+            <MainFeedCard key={photoCard._id} currentUser={this.props.user.user} photo={photoCard} />
           );
         })
         :
@@ -37,7 +39,7 @@ class MainFeed extends Component {
   }
 }
 
-const mapDispatchToProps = { fetchPhotoCards };
+const mapDispatchToProps = { fetchPhotoCards, fetchUser };
 
 const ConnectedMainFeed = connect(mapStateToProps, mapDispatchToProps)(MainFeed);
 

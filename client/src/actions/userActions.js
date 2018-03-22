@@ -5,7 +5,9 @@ import {
   USER_SIGNUP_ATTEMPT,
   USER_SIGNUP_FAILURE,
   USER_SIGNUP_SUCCESS,
-  FETCH_USER
+  FETCH_USER,
+  FETCH_USER_SUCCESS,
+  USER_SIGNOUT
 } from "../constants/actionTypes";
 
 import { apiUtils } from '../utils/utils';
@@ -22,10 +24,16 @@ export function fetchUser(token) {
       .then(res => res.json())
       .then((data) => {
         const user = {user: data.user, token: token}
+        dispatch(fetchUserSuccess({...data, token: token}))
         return user;
       })
   }
-} 
+}
+
+export const fetchUserSuccess = user => ({
+  type: FETCH_USER_SUCCESS,
+  payload: user
+});
 
 // LOGIN
 export const userLoginSuccess = user => ({
@@ -98,4 +106,11 @@ export const userSignupSuccess = user => ({
 export const userSignupFailure = (error) => ({
   type: USER_SIGNUP_FAILURE,
   payload: error
+});
+
+// SIGNOUT
+
+export const userSignOut = user => ({
+  type: USER_SIGNOUT,
+  payload: user
 });

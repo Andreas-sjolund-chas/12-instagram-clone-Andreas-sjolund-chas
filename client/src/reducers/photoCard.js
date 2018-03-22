@@ -8,7 +8,7 @@ const photoCard = (state = [], action) => {
       
       case FETCH_PHOTOCARDS:
         return [
-            ...state,
+            // ...state,
             ...action.payload
         ]
 
@@ -17,7 +17,7 @@ const photoCard = (state = [], action) => {
           if (photo._id === action.payload.photoId) {
             photo.comments = [...photo.comments, action.payload.comment]
           }
-          return photo
+          return {...photo}
         })
 
       case LIKE_PHOTO_SUCCESS:
