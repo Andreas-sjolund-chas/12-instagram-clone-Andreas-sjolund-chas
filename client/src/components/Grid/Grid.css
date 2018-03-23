@@ -9,6 +9,18 @@
 
 }
 
+.Grid-overlay {
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  padding: 5px;
+}
+
+.Grid-overlay p {
+  padding: 0;
+}
+
 .Grid--photo {
   width: 300px;
   height: 300px;

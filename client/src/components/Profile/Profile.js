@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid } from '../';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import moment from "moment";
 import { fetchUser, userSignOut } from '../../actions/userActions';
 import { fetchAllPhotosByUserId } from '../../actions/photoCardActions';
 
@@ -101,6 +102,7 @@ class Profile extends Component {
       <div className="Grid-container">
         { this.state.photoCards.length ? 
             this.state.photoCards.map(photoCard => {
+              console.log(photoCard)
               return (
                 <Grid card={photoCard}/>
               );

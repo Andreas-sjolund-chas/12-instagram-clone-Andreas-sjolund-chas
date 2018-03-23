@@ -13,7 +13,11 @@ class Signin extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      emailValidation: true,
+      passwordValidation: true,
+      emailStyle: [],
+      passwordStyle: []
     };
 
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -22,12 +26,38 @@ class Signin extends Component {
   }
 
   handleEmailChange(event) {
+    var email = event.target.value;
+        if (email.indexOf('@') !== -1 && email.length > 5) {
+            this.setState({
+                emailValidation: true,
+                emailStyle: {'borderColor': 'green'}
+            });
+        } else {
+            this.setState({
+                emailValidation: false,
+                emailStyle: {'borderColor': 'red'}
+            });
+        }
+
     this.setState({
       email: event.target.value
     });
   }
 
   handlePasswordChange(event) {
+    var password = event.target.value;
+        if (password.length >= 8) {
+            this.setState({
+                password: true,
+                passwordStyle: {'borderColor': 'green'}
+            });
+        } else {
+            this.setState({
+                password: false,
+                passwordStyle: {'borderColor': 'red'}
+            });
+        }
+
     this.setState({
       password: event.target.value
     });
@@ -52,7 +82,12 @@ class Signin extends Component {
               placeholder="Email..."
               value={this.state.email}
               onChange={this.handleEmailChange}
+              style={this.state.emailStyle}
             />
+            { !this.state.emailValidation ?
+              <p className="email-error">Invalid email</p>
+          :
+          ''}
           </div>
           <div className="form-col">
             <input
@@ -61,11 +96,16 @@ class Signin extends Component {
               placeholder="Password..."
               value={this.state.password}
               onChange={this.handlePasswordChange}
+              style={this.state.passwordStyle}
             />
+            { !this.state.password ?
+              <p className="password-error">Needs to be 8 at least characters long</p>
+            :
+            ''}
             {this.props.user.errorMessage !== '' ? 
             <p>{this.props.user.errorMessage}</p>
             :
-          ''}
+            ''}
           </div>
           <button
             disabled={

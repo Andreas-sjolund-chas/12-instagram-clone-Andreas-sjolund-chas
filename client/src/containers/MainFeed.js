@@ -18,7 +18,9 @@ class MainFeed extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token');
     this.props.fetchPhotoCards()
-      .then(this.props.fetchUser(token))
+    if(localStorage.getItem('token')) {
+      this.props.fetchUser(token)
+    }
     
   }
 

@@ -16,7 +16,13 @@ class Header extends Component {
               <Link to="/" className="Header-nav-link"><i className="fa fa-home"></i></Link>
               <Link to="/search" className="Header-nav-link"><i className="fa fa-search"></i></Link>
               <Link to="/upload" className="Header-nav-link"><i className="fa fa-camera-retro"></i></Link>
-              <Link to="/user" className="Header-nav-link"><i className="fa fa-user"></i></Link>
+              {localStorage.getItem('token') ?
+                <Link to="/user" className="Header-nav-link"><i className="fa fa-user"></i></Link>
+                :
+                <Link to="/user/signin" className="Header-nav-link"><i className="fa fa-user"></i></Link>
+
+              }
+
               <Link to="/liked" className="Header-nav-link"><i className="fa fa-heart"></i></Link>
             </nav>
             :

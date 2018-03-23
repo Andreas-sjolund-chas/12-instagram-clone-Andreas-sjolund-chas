@@ -24,7 +24,6 @@ class MainFeedCard extends Component {
     if (nextProps.currentUser) {
       this.props.photo.likes.map(like => {
         if (like === nextProps.currentUser.id && !this.state.likeActive) {
-          console.log('true');
           this.setState({
             likeActive: true
           })
@@ -60,18 +59,15 @@ class MainFeedCard extends Component {
   }
 
   render() {
-    console.log(this.state)
     let likeStyles = {
       color: 'black'
     };
     if (this.state.likeActive) {
-      console.log('should be red')
       likeStyles = {
         color: 'red'
       };
     }
     if (!this.state.likeActive) {
-      console.log('should be black')
       likeStyles = {
         color: 'black'
       };
@@ -111,7 +107,7 @@ class MainFeedCard extends Component {
 
           { this.props.photo.comments.length ?
             this.props.photo.comments.map(item => {
-              return <PhotoComment comment={item} />;
+              return <PhotoComment key={item.id} comment={item} />;
             })
           
           :
