@@ -13,6 +13,14 @@ app.use('/auth', AuthController);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 app.use('/avatars', express.static(path.join(__dirname, 'avatars')))
 
+// Express only serves static assets in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+}
 
 // app.use(jwt.init('secret'));
 
