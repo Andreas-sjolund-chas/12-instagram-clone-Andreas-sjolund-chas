@@ -5,6 +5,8 @@ If I want the server to be up and running 24/7 I will have to pay for that.
 
 Everything should work if you register a user and upload a picture locally from your computer.
 
+(Capture from camera is not done, just played around with it some)
+
 ### Deployed version
 <a href="https://instamang.herokuapp.com/">Click here</a>
 
