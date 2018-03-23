@@ -1,0 +1,28 @@
+.Login a {
+    margin: 5px;
+    text-decoration: none;
+}
+
+.form-col {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.Signup-container form, .Signin-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.username-error, .email-error, .password-error {
+    font-size: .7em;
+    width: auto;
+    position: absolute;
+    top: 22px;
+}
+
+.Signup-container input, .Signin-container input {
+    margin-bottom: 30px;
+    height: 30px;
+    border: solid 2px;
+}

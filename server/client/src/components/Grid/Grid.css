@@ -1,0 +1,31 @@
+.Grid-container {
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Grid-container img {
+
+}
+
+.Grid-overlay {
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  padding: 5px;
+}
+
+.Grid-overlay p {
+  padding: 0;
+}
+
+.Grid--photo {
+  width: 300px;
+  height: 300px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 15px;
+}
